@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/style.css";
 
-function BudgetLimits(){
+function BudgetLimits(){//for the page which shows the limits
     const[limits,setLimits] = useState([])
     const [form,setForm] = useState({
         category: "",

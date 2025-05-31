@@ -22,7 +22,7 @@ function EditTransactionModal({ transaction, onClose, onSuccess }){
             return alert("Date must be in YYYY-MM-DD format")
         }
 
-        //code to add transaction
+        //code to update transaction
         try{
             await axios.put(`http://localhost:5000/transactions/${form.id}`, form, {withCredentials: true});
             alert("Transaction Updated");

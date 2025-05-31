@@ -7,7 +7,7 @@ import TransactionListItem from "../components/TransactionListItem";
 import Navbar from "../components/Navbar";
 import "../styles/style.css";
 
-function Dashboard(){
+function Dashboard(){// dashboard for transactions
     const [username, setUsername] = useState("");
     const [summary, setSummary] = useState({ income:0, expense:0, balance:0});
     const [transactions, setTransactions] = useState([]);

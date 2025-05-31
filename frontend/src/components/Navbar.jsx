@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/style.css";
 
-function Navbar(){
+function Navbar(){ //for the navbar
     const navigate = useNavigate();
 
     const handleLogout = async () => {

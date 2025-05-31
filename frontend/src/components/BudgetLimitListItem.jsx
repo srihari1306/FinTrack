@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "../styles/style.css";
 
-function BudgetLimitListItem({limit, onDeleteSuccess}){
+function BudgetLimitListItem({limit, onDeleteSuccess}){ //to display all the limits as a list of items
     const handleDelete = async () => {
         if(window.confirm("Are you sure you want to delete this Limit?")){
             try{

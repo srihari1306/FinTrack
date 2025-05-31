@@ -3,9 +3,9 @@ from flask_login import login_required,current_user
 from models import db,Transaction, BudgetLimit
 from datetime import datetime
 
-fin_bp = Blueprint('finance',__name__)
+fin_bp = Blueprint('finance',__name__) #blueprint for finance
 
-@fin_bp.route('/transactions',methods=['POST'])
+@fin_bp.route('/transactions',methods=['POST'])#adding new transactions
 @login_required
 def add_transaction():
     data=request.json
@@ -39,7 +39,7 @@ def add_transaction():
     db.session.commit()
     return jsonify({'message': 'Transaction added'})
 
-@fin_bp.route('/transactions',methods=['GET'])
+@fin_bp.route('/transactions',methods=['GET']) #get transactions
 @login_required
 def get_transaction():
     transactions=Transaction.query.filter_by(user_id=current_user.id).all()
@@ -55,7 +55,7 @@ def get_transaction():
     ]
     return jsonify(result)
 
-@fin_bp.route('/transactions/<int:id>',methods=['PUT'])
+@fin_bp.route('/transactions/<int:id>',methods=['PUT']) #updating transactions
 @login_required
 def update_transaction(id):
     transaction= Transaction.query.get_or_404(id)
@@ -89,7 +89,7 @@ def update_transaction(id):
     db.session.commit()
     return jsonify({'message': 'Transaction updated'})
 
-@fin_bp.route('/transactions/<int:id>',methods=['DELETE'])
+@fin_bp.route('/transactions/<int:id>',methods=['DELETE']) #deleting transaction
 @login_required
 def delete_transaction(id):
     transaction = Transaction.query.get_or_404(id)
@@ -100,7 +100,7 @@ def delete_transaction(id):
     db.session.commit()
     return jsonify({'message':'Transaction deleted'})
 
-@fin_bp.route('/dashboard',methods=["GET"])
+@fin_bp.route('/dashboard',methods=["GET"]) # getting the dashboard
 @login_required
 def dashboard():
     try:
@@ -144,7 +144,7 @@ def dashboard():
         return jsonify({"message": "An error occured while fetching the dashboard data."}),500
     
     
-@fin_bp.route('/budget-limit', methods=['POST'])
+@fin_bp.route('/budget-limit', methods=['POST'])#creating AND updating budget-limits
 @login_required
 def set_budget_limit():
     data=request.json
@@ -165,7 +165,7 @@ def set_budget_limit():
     db.session.commit()
     return jsonify({"message":"Budget limit set successfully"})
 
-@fin_bp.route('/budget-limit', methods=['GET'])
+@fin_bp.route('/budget-limit', methods=['GET']) # getting the limits
 @login_required
 def get_budget_limit():
     limits = BudgetLimit.query.filter_by(user_id=current_user.id).all()
@@ -175,7 +175,7 @@ def get_budget_limit():
     ])
 
 
-@fin_bp.route('/budget-limit/<int:id>', methods=['DELETE'])
+@fin_bp.route('/budget-limit/<int:id>', methods=['DELETE']) # deleting the budget-limits
 @login_required
 def delete_budget_limit(id):
     limit = BudgetLimit.query.get_or_404(id)

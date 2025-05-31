@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "../styles/style.css";
 
-function TransactionListItem({transaction, onEdit, onDeleteSuccess}){
+function TransactionListItem({transaction, onEdit, onDeleteSuccess}){ //for the transaction list items
     const handleDelete = async () => {
         if(window.confirm("Are you sure you want to delete this transaction?")){
             try{

@@ -33,7 +33,7 @@ function AddTransactionModal({ onClose, onSuccess }){
             await axios.post("http://localhost:5000/transactions",form,{withCredentials: true});
             alert("Transaction added")
             onSuccess();
-            onClose();
+            onClose();//for cancel button
         }catch(err){
             alert("Failed to add transaction");
         }
